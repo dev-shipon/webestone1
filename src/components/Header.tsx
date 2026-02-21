@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import logo from "../assets/Webestone-Logo.png";
 import {
 	Menu,
 	X,
@@ -21,13 +22,13 @@ import {
 } from "lucide-react";
 
 const defaultSite = {
-	logoUrl: "",
-	siteName: "WeBestOne",
-	logoText: "W",
+	logoUrl: logo,
+	siteName: "Webestone",
 };
 
 export default function Header() {
 	const [isOpen, setIsOpen] = useState(false);
+	const { pathname } = useLocation();
 	const [isServicesHovered, setIsServicesHovered] = useState(false);
 	const [site] = useState(defaultSite);
 
@@ -126,21 +127,13 @@ export default function Header() {
 			<div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 				{/* Logo */}
 				<Link to="/" className="flex items-center gap-2 group">
-					<div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-neon-green rounded-lg flex items-center justify-center text-black font-bold text-xl overflow-hidden relative">
-						{site.logoUrl ?
-							<img
-								src={site.logoUrl}
-								alt={site.siteName || "Webestone Logo"}
-								width="40"
-								height="40"
-								className="w-full h-full object-cover"
-							/>
-						:	<span className="relative z-10">{site.logoText || "W"}</span>}
-						<div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+					<div className="h-10 rounded-lg flex items-center justify-center text-black font-bold text-xl overflow-hidden relative">
+						<img
+							src={logo}
+							alt={"logo"}
+							className="w-full h-full object-cover"
+						/>
 					</div>
-					<span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-neon-green min-w-[150px]">
-						{site.siteName || "WeBestOne"}
-					</span>
 				</Link>
 
 				{/* Desktop Nav */}
@@ -158,10 +151,28 @@ export default function Header() {
 						>
 							<Link
 								to={link.href}
-								className="text-sm font-medium text-neutral-300 hover:text-neon-green transition-colors relative py-4"
+								className={`text-sm font-medium transition-colors relative py-4 ${
+									(
+										link.href === "/" ?
+											pathname === "/"
+										:	pathname.startsWith(link.href)
+									) ?
+										"text-neon-green"
+									:	"text-neutral-300 hover:text-neon-green"
+								}`}
 							>
 								{link.name}
-								<span className="absolute bottom-2 left-0 w-0 h-0.5 bg-neon-green transition-all duration-300 group-hover:w-full"></span>
+								<span
+									className={`absolute bottom-2 left-0 h-0.5 bg-neon-green transition-all duration-300 ${
+										(
+											link.href === "/" ?
+												pathname === "/"
+											:	pathname.startsWith(link.href)
+										) ?
+											"w-full"
+										:	"w-0 group-hover:w-full"
+									}`}
+								></span>
 							</Link>
 
 							{/* Mega Menu for Services */}
@@ -240,7 +251,15 @@ export default function Header() {
 							<Link
 								key={link.name}
 								to={link.href}
-								className="text-lg font-medium text-neutral-300 hover:text-neon-green transition-colors"
+								className={`text-lg font-medium transition-colors ${
+									(
+										link.href === "/" ?
+											pathname === "/"
+										:	pathname.startsWith(link.href)
+									) ?
+										"text-neon-green"
+									:	"text-neutral-300 hover:text-neon-green"
+								}`}
 								onClick={() => setIsOpen(false)}
 							>
 								{link.name}
