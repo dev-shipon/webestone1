@@ -136,6 +136,28 @@ export default function Footer() {
 								</li>
 							</ul>
 						</div>
+
+						<div className="space-y-6">
+							<h3 className="text-white font-bold text-lg">Legal</h3>
+							<ul className="space-y-3">
+								<li>
+									<Link
+										to="/terms-and-conditions"
+										className="hover:text-neon-green transition-colors text-sm"
+									>
+										Terms &amp; Conditions
+									</Link>
+								</li>
+								<li>
+									<Link
+										to="/privacy-policy"
+										className="hover:text-neon-green transition-colors text-sm"
+									>
+										Privacy Policy
+									</Link>
+								</li>
+							</ul>
+						</div>
 					</div>
 
 					{/* Column 4: Socials & Button (3 cols) */}
@@ -211,8 +233,23 @@ export default function Footer() {
 					</div>
 				</div>
 
-				<div className="mt-20 pt-8 border-t border-white/5 text-center text-neutral-600 text-sm">
+				<div className="mt-20 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-neutral-600 text-sm">
 					<p>© {new Date().getFullYear()} WeBestOne. All rights reserved.</p>
+					<div className="flex items-center gap-4">
+						<Link
+							to="/terms-and-conditions"
+							className="hover:text-neon-green transition-colors"
+						>
+							Terms &amp; Conditions
+						</Link>
+						<span>·</span>
+						<Link
+							to="/privacy-policy"
+							className="hover:text-neon-green transition-colors"
+						>
+							Privacy Policy
+						</Link>
+					</div>
 				</div>
 			</div>
 		</footer>

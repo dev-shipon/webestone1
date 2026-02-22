@@ -11,6 +11,8 @@ import BlogDetailPage from "./pages/BlogDetailPage";
 import ServicesPage from "./pages/ServicesPage";
 import ServiceDetailPage from "./pages/ServiceDetailPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 
 export default function App() {
 	return (
@@ -26,6 +28,11 @@ export default function App() {
 					<Route path="/blogs/:id" element={<BlogDetailPage />} />
 					<Route path="/services" element={<ServicesPage />} />
 					<Route path="/services/:slug" element={<ServiceDetailPage />} />
+					<Route
+						path="/terms-and-conditions"
+						element={<TermsAndConditionsPage />}
+					/>
+					<Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
 					<Route path="*" element={<NotFoundPage />} />
 				</Routes>
 				<Footer />
