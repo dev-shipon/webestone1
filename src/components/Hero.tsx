@@ -46,7 +46,7 @@ export default function Hero() {
 					<motion.div variants={item} className="flex items-center gap-2">
 						<span className="w-10 h-[1px] bg-neon-green"></span>
 						<span className="text-neon-green uppercase tracking-widest text-sm font-semibold">
-							Innovation Meets Automation
+							Innovation Meets Automation add 
 						</span>
 					</motion.div>
 
