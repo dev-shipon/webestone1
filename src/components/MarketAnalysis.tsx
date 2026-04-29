@@ -1,0 +1,81 @@
+import { motion } from "framer-motion";
+import { TrendingUp, Users, Globe, BarChart2 } from "lucide-react";
+
+const stats = [
+  {
+    icon: Users,
+    value: "67M+",
+    label: "Active Internet Users",
+    description: "Bangladesh has a massive digital audience waiting to be reached.",
+    color: "text-blue-500",
+    bg: "bg-blue-500/10",
+  },
+  {
+    icon: Globe,
+    value: "45M+",
+    label: "Social Media Users",
+    description: "The majority of the population is active on social platforms daily.",
+    color: "text-rose-500",
+    bg: "bg-rose-500/10",
+  },
+  {
+    icon: TrendingUp,
+    value: "20%+",
+    label: "Annual E-commerce Growth",
+    description: "Digital commerce is exploding in the Bangladesh market.",
+    color: "text-neon-green",
+    bg: "bg-neon-green/10",
+  },
+  {
+    icon: BarChart2,
+    value: "85%",
+    label: "Research Before Buy",
+    description: "Customers research online before making any purchase decision.",
+    color: "text-purple-500",
+    bg: "bg-purple-500/10",
+  },
+];
+
+export default function MarketAnalysis() {
+  return (
+    <section className="py-16 md:py-24 px-6 relative overflow-hidden bg-black/50">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12 md:mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-6">
+              Why Digital Marketing in <span className="text-neon-green">Bangladesh?</span>
+            </h2>
+            <p className="text-neutral-400 text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
+              The digital landscape in Bangladesh is evolving rapidly. To stay competitive, brands must adapt to where their customers are: <span className="text-white font-semibold">Online.</span>
+            </p>
+          </motion.div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="p-6 md:p-8 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-neon-green/30 transition-all group"
+            >
+              <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl ${stat.bg} ${stat.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                <stat.icon className="w-5 h-5 md:w-6 md:h-6" />
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">{stat.value}</h3>
+              <p className="text-xs md:text-sm font-semibold text-neutral-300 mb-3 uppercase tracking-wider">{stat.label}</p>
+              <p className="text-neutral-500 text-xs md:text-sm leading-relaxed">{stat.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

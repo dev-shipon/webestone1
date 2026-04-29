@@ -1,76 +1,123 @@
 import { motion } from "framer-motion";
+import { ArrowRight, BarChart3, Target, ShieldCheck, Zap, TrendingUp } from "lucide-react";
 import { MagneticButton } from "./ui/MagneticButton";
-import { ArrowRight, Clock, Target, Search, Settings } from "lucide-react";
 
 export default function WhyChooseUs() {
 	return (
-		<section className="py-24 px-6 relative overflow-hidden">
-			<div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-				{/* Left: Orbiting Visuals */}
-				<div className="relative h-[500px] flex items-center justify-center">
-					{/* Central Core */}
+		<section className="py-24 px-6 bg-black relative">
+			{/* Subtle Background Glow */}
+			<div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-neon-green/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+			<div className="max-w-7xl mx-auto">
+				<div className="text-center mb-16 sm:mb-24">
 					<motion.div
-						initial={{ scale: 0.8, opacity: 0 }}
-						whileInView={{ scale: 1, opacity: 1 }}
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5 }}
-						className="relative z-10 w-40 h-40 rounded-full bg-white/5 border border-white/10 backdrop-blur-md flex items-center justify-center shadow-[0_0_50px_rgba(255,255,255,0.05)]"
 					>
-						<div className="text-center">
-							<Clock className="w-12 h-12 text-neon-green mx-auto mb-2" />
-							<span className="text-xs text-neutral-400 font-mono">
-								EFFICIENCY
+						<div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6">
+							<span className="w-2 h-2 rounded-full bg-neon-green animate-pulse"></span>
+							<span className="text-white/80 font-mono text-xs font-semibold tracking-wider uppercase">
+								Why WeBestOne
 							</span>
+						</div>
+						<h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white tracking-tight">
+							We build resilient <br className="hidden md:block" />
+							<span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-emerald-400">
+								growth engines.
+							</span>
+						</h2>
+						<p className="mt-6 text-neutral-400 text-lg md:text-xl max-w-2xl mx-auto">
+							Stop paying for vanity metrics. We focus exclusively on visibility, engagement, and revenue-generating conversions.
+						</p>
+					</motion.div>
+				</div>
+
+				{/* Bento Grid */}
+				<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+					{/* Card 1: Large - Data Driven */}
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5, delay: 0.1 }}
+						className="md:col-span-2 group relative overflow-hidden rounded-3xl bg-white/[0.02] border border-white/10 p-8 sm:p-10 hover:bg-white/[0.04] transition-colors"
+					>
+						<div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+							<TrendingUp className="w-32 h-32 text-neon-green" />
+						</div>
+						<div className="relative z-10">
+							<div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8">
+								<BarChart3 className="w-7 h-7 text-neon-green" />
+							</div>
+							<h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">Data-Driven ROI</h3>
+							<p className="text-neutral-400 text-lg leading-relaxed max-w-md">
+								We don't guess. Every campaign, content piece, and ad is backed by hard data to ensure maximum return on your investment.
+							</p>
 						</div>
 					</motion.div>
 
-					{/* Orbit Rings */}
-					<div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-						<div className="w-[300px] h-[300px] border border-white/5 rounded-full animate-spin-slow"></div>
-						<div className="w-[450px] h-[450px] border border-white/5 rounded-full absolute animate-reverse-spin-slower"></div>
-					</div>
-
-					{/* Orbiting Icons */}
+					{/* Card 2: Transparency */}
 					<motion.div
-						animate={{ rotate: 360 }}
-						transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-						className="absolute inset-0 w-full h-full"
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5, delay: 0.2 }}
+						className="md:col-span-1 group relative overflow-hidden rounded-3xl bg-white/[0.02] border border-white/10 p-8 sm:p-10 hover:bg-white/[0.04] transition-colors"
 					>
-						{/* Item 1 */}
-						<div className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-black border border-white/10 rounded-full flex items-center justify-center shadow-lg">
-							<Search className="w-6 h-6 text-blue-400" />
+						<div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8">
+							<ShieldCheck className="w-7 h-7 text-blue-400" />
 						</div>
-						{/* Item 2 */}
-						<div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-black border border-white/10 rounded-full flex items-center justify-center shadow-lg">
-							<Target className="w-5 h-5 text-purple-400" />
+						<h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Full Transparency</h3>
+						<p className="text-neutral-400 leading-relaxed">
+							Clear reporting, open communication, and absolute clarity on where every dollar goes.
+						</p>
+					</motion.div>
+
+					{/* Card 3: Fast Execution */}
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5, delay: 0.3 }}
+						className="md:col-span-1 group relative overflow-hidden rounded-3xl bg-white/[0.02] border border-white/10 p-8 sm:p-10 hover:bg-white/[0.04] transition-colors"
+					>
+						<div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8">
+							<Zap className="w-7 h-7 text-yellow-400" />
 						</div>
-						{/* Item 3 */}
-						<div className="absolute bottom-1/4 right-[10%] w-12 h-12 bg-black border border-white/10 rounded-full flex items-center justify-center shadow-lg">
-							<Settings className="w-5 h-5 text-orange-400" />
+						<h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Agile Execution</h3>
+						<p className="text-neutral-400 leading-relaxed">
+							We move fast. Rapid testing, iteration, and scaling to keep you ahead of the competition.
+						</p>
+					</motion.div>
+
+					{/* Card 4: Large - Precision Targeting */}
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5, delay: 0.4 }}
+						className="md:col-span-2 group relative overflow-hidden rounded-3xl bg-white/[0.02] border border-white/10 p-8 sm:p-10 hover:bg-white/[0.04] transition-colors flex flex-col justify-center"
+					>
+						<div className="absolute top-1/2 -translate-y-1/2 right-10 opacity-10 group-hover:opacity-20 transition-opacity">
+							<Target className="w-40 h-40 text-purple-400" />
+						</div>
+						<div className="relative z-10">
+							<div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8">
+								<Target className="w-7 h-7 text-purple-400" />
+							</div>
+							<h3 className="text-2xl sm:text-3xl font-bold text-white mb-4">Precision Targeting</h3>
+							<p className="text-neutral-400 text-lg leading-relaxed max-w-md">
+								We don't just drive traffic; we attract the right audience. High-intent prospects that are ready to convert into loyal customers.
+							</p>
 						</div>
 					</motion.div>
 				</div>
 
-				{/* Right: Content */}
-				<div className="space-y-8 text-left">
+				<div className="mt-16 flex justify-center">
 					<motion.div
-						initial={{ opacity: 0, x: 20 }}
-						whileInView={{ opacity: 1, x: 0 }}
-						transition={{ duration: 0.5 }}
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5, delay: 0.5 }}
 					>
-						<span className="text-neon-green font-mono text-sm tracking-widest uppercase mb-2 block">
-							Our Team
-						</span>
-						<h2 className="text-4xl md:text-5xl font-bold leading-tight text-white mb-6">
-							Why brands choose <br /> WeBestOne.
-						</h2>
-						<p className="text-neutral-400 text-lg leading-relaxed mb-8">
-							We are not here to just run campaigns. We are here to build growth
-							engines for your business. Our focus is simple: more visibility,
-							more engagement, and more conversions.
-						</p>
-
-						<MagneticButton className="px-8 py-4 bg-gradient-to-r from-red-500 to-orange-500 rounded-full font-bold text-white shadow-lg hover:shadow-red-500/20 transition-all flex items-center gap-2 group">
-							<span>Meet Our Team</span>
+						<MagneticButton className="px-8 py-4 bg-white text-black hover:bg-neutral-200 rounded-full font-bold shadow-[0_0_40px_rgba(255,255,255,0.2)] transition-all flex items-center gap-2 group">
+							<span>Start Growing Today</span>
 							<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
 						</MagneticButton>
 					</motion.div>

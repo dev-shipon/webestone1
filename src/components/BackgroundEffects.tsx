@@ -3,51 +3,53 @@ import { motion } from "framer-motion";
 export default function BackgroundEffects() {
 	return (
 		<div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-			{/* Floating Orb 1 */}
-			<motion.div
-				animate={{
-					x: [0, 50, 0],
-					y: [0, -30, 0],
-				}}
-				transition={{
-					duration: 15,
-					repeat: Infinity,
-					repeatType: "reverse",
-					ease: "linear",
-				}}
-				className="absolute top-1/4 left-1/4 w-64 h-64 bg-neon-green/10 rounded-full blur-[60px] will-change-transform"
-			/>
+      {/* Base Noise Texture to prevent banding (fata fata look) */}
+      <div className="absolute inset-0 opacity-[0.4] mix-blend-overlay pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
-			{/* Floating Orb 2 */}
+			{/* Floating Orb 1 - Top Left */}
 			<motion.div
 				animate={{
-					x: [0, -80, 0],
-					y: [0, 50, 0],
+					x: [0, 40, 0],
+					y: [0, 60, 0],
 				}}
 				transition={{
 					duration: 20,
 					repeat: Infinity,
-					repeatType: "reverse",
 					ease: "linear",
 				}}
-				className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-[80px] will-change-transform"
+				className="absolute -top-24 -left-24 w-[500px] h-[500px] bg-neon-green/10 rounded-full blur-[140px] will-change-transform"
 			/>
 
-			{/* Floating Orb 3 */}
+			{/* Floating Orb 2 - Bottom Right */}
 			<motion.div
 				animate={{
-					scale: [1, 1.1, 1],
+					x: [0, -60, 0],
+					y: [0, -40, 0],
 				}}
 				transition={{
-					duration: 12,
+					duration: 25,
 					repeat: Infinity,
-					repeatType: "reverse",
-					ease: "easeInOut",
+					ease: "linear",
 				}}
-				className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-neon-green/5 rounded-full blur-[100px] will-change-transform"
+				className="absolute -bottom-24 -right-24 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[160px] will-change-transform"
 			/>
 
-			<div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]"></div>
+			{/* Floating Orb 3 - Center */}
+			<motion.div
+				animate={{
+					scale: [1, 1.2, 1],
+					opacity: [0.3, 0.5, 0.3]
+				}}
+				transition={{
+					duration: 15,
+					repeat: Infinity,
+					ease: "easeInOut",
+				}}
+				className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-neon-green/[0.03] rounded-full blur-[180px] will-change-transform"
+			/>
+
+      {/* Subtle Grid for depth */}
+			<div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.02] mix-blend-plus-lighter"></div>
 		</div>
 	);
 }

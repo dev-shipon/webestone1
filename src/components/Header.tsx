@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import logo from "../assets/Webestone-Logo.png";
 import {
@@ -19,7 +19,13 @@ import {
 	Gamepad2,
 	Bot,
 	Megaphone,
+	Facebook,
+	Instagram,
+	Phone,
+	Layout,
+	ShoppingBag,
 } from "lucide-react";
+import { MagneticButton } from "./ui/MagneticButton";
 
 const defaultSite = {
 	logoUrl: logo,
@@ -31,6 +37,15 @@ export default function Header() {
 	const { pathname } = useLocation();
 	const [isServicesHovered, setIsServicesHovered] = useState(false);
 	const [site] = useState(defaultSite);
+	const [isScrolled, setIsScrolled] = useState(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			setIsScrolled(window.scrollY > 50);
+		};
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
 
 	const servicesList = [
 		{
@@ -40,52 +55,22 @@ export default function Header() {
 			href: "/services/digital-marketing",
 		},
 		{
-			title: "SEO",
+			title: "AI Driven SEO",
 			description: "Search Engine Optimization",
 			icon: Search,
 			href: "/services/seo",
 		},
 		{
-			title: "Social Media",
+			title: "SMM (Social Media)",
 			description: "Marketing Campaigns",
 			icon: Share2,
 			href: "/services/social-media-marketing",
 		},
 		{
-			title: "PPC",
-			description: "Pay Per Click Ads",
+			title: "PPC (Ads)",
+			description: "Paid Advertising",
 			icon: MousePointerClick,
 			href: "/services/ppc",
-		},
-		{
-			title: "Video Editing",
-			description: "Cinematic Content",
-			icon: MonitorPlay,
-			href: "/services/video-editing",
-		},
-		{
-			title: "Motion Graphics",
-			description: "Modern Animations",
-			icon: Mountain,
-			href: "/services/motion-graphics",
-		},
-		{
-			title: "UI/UX Design",
-			description: "User-Focused Design",
-			icon: PenTool,
-			href: "/services/ui-ux-design",
-		},
-		{
-			title: "Web Dev",
-			description: "Responsive Websites",
-			icon: Zap,
-			href: "/services/web-development",
-		},
-		{
-			title: "Interior Design",
-			description: "Spatial Identity",
-			icon: Home,
-			href: "/services/interior-design",
 		},
 		{
 			title: "Shopify SEO",
@@ -100,19 +85,44 @@ export default function Header() {
 			href: "/services/content-writing",
 		},
 		{
-			title: "App Design",
-			description: "Intuitive Interfaces",
-			icon: Gamepad2,
-			href: "/services/app-design",
+			title: "Video Editing",
+			description: "Cinematic Content",
+			icon: MonitorPlay,
+			href: "/services/video-editing",
 		},
 		{
-			title: "AI Solutions",
-			description: "Automated Systems",
-			icon: Bot,
-			href: "/services/ai-solutions",
+			title: "Motion Graphics",
+			description: "Modern Animations",
+			icon: Mountain,
+			href: "/services/motion-graphics",
+		},
+		{
+			title: "Website Development",
+			description: "Responsive Websites",
+			icon: Zap,
+			href: "/services/web-development",
+		},
+		{
+			title: "WordPress Web",
+			description: "CMS Solutions",
+			icon: Layout, // Replacing Home with Layout for WordPress
+			href: "/services/wordpress",
+		},
+		{
+			title: "Web Design (UI UX)",
+			description: "User-Focused Design",
+			icon: PenTool,
+			href: "/services/ui-ux-design",
+		},
+		{
+			title: "Shopify Development",
+			description: "E-commerce Solutions",
+			icon: ShoppingBag,
+			href: "/services/shopify-dev",
 		},
 	];
 
+  // Need to import Layout and ShoppingBag
 	const navLinks = [
 		{ name: "Home", href: "/" },
 		{ name: "Work", href: "#work" },
@@ -123,15 +133,15 @@ export default function Header() {
 	];
 
 	return (
-		<header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-white/5">
+		<header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-background/95 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
 			<div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
 				{/* Logo */}
-				<Link to="/" className="flex items-center gap-2 group">
-					<div className="h-10 rounded-lg flex items-center justify-center text-black font-bold text-xl overflow-hidden relative">
+				<Link to="/" className="flex items-center gap-2 group shrink-0">
+					<div className="h-10 flex items-center justify-center font-bold text-xl overflow-hidden relative">
 						<img
 							src={logo}
 							alt={"logo"}
-							className="w-full h-full object-cover"
+							className="h-full w-auto object-contain"
 						/>
 					</div>
 				</Link>
@@ -151,7 +161,7 @@ export default function Header() {
 						>
 							<Link
 								to={link.href}
-								className={`text-sm font-medium transition-colors relative py-4 ${
+								className={`text-sm font-bold transition-colors relative py-4 ${
 									(
 										link.href === "/" ?
 											pathname === "/"
@@ -176,98 +186,119 @@ export default function Header() {
 							</Link>
 
 							{/* Mega Menu for Services */}
-							{link.name === "Services" && isServicesHovered && (
-								<motion.div
-									initial={{ opacity: 0, y: 10 }}
-									animate={{ opacity: 1, y: 0 }}
-									exit={{ opacity: 0, y: 10 }}
-									transition={{ duration: 0.2 }}
-									className="absolute top-full left-1/2 -translate-x-1/2 w-[900px] p-6 bg-neutral-900/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl grid grid-cols-3 gap-6 z-50 mt-2"
-								>
-									{/* Decorative Glow */}
-									<div className="absolute -top-10 left-1/2 -translate-x-1/2 w-32 h-32 bg-neon-green/20 rounded-full blur-[50px] pointer-events-none"></div>
+							<AnimatePresence>
+								{link.name === "Services" && isServicesHovered && (
+									<motion.div
+										initial={{ opacity: 0, y: 10 }}
+										animate={{ opacity: 1, y: 0 }}
+										exit={{ opacity: 0, y: 10 }}
+										transition={{ duration: 0.2 }}
+										className="absolute top-full left-1/2 -translate-x-1/2 w-[900px] p-8 bg-neutral-900/98 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl grid grid-cols-3 gap-x-8 gap-y-4 z-50 mt-2"
+									>
+										{/* Decorative Glow */}
+										<div className="absolute -top-10 left-1/2 -translate-x-1/2 w-48 h-48 bg-neon-green/10 rounded-full blur-[80px] pointer-events-none"></div>
 
-									{servicesList.map((service, index) => (
-										<Link
-											key={index}
-											to={service.href}
-											className="group/item flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/5"
-										>
-											<div
-												className={`p-2 rounded-lg bg-white/5 border border-white/5 text-neon-green group-hover/item:bg-neon-green group-hover/item:text-black transition-all duration-300`}
+										{servicesList.map((service, index) => (
+											<Link
+												key={index}
+												to={service.href}
+												className="group/item flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/5"
 											>
-												<service.icon className="w-5 h-5" />
-											</div>
-											<div>
-												<h4 className="text-white font-bold text-sm mb-1 group-hover/item:text-neon-green transition-colors">
-													{service.title}
-												</h4>
-												<p className="text-xs text-neutral-400 leading-snug line-clamp-2">
-													{service.description}
-												</p>
-											</div>
-										</Link>
-									))}
+												<div
+													className={`w-10 h-10 shrink-0 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center text-neutral-400 group-hover/item:bg-neon-green group-hover/item:text-black transition-all duration-300`}
+												>
+													<service.icon className="w-5 h-5" />
+												</div>
+												<div>
+													<h4 className="text-white font-bold text-sm mb-0.5 group-hover/item:text-neon-green transition-colors">
+														{service.title}
+													</h4>
+                          <p className="text-[10px] text-neutral-500 line-clamp-1 group-hover/item:text-neutral-400 transition-colors">
+                            {service.description}
+                          </p>
+												</div>
+											</Link>
+										))}
 
-									<div className="col-span-3 pt-4 mt-2 border-t border-white/5 flex justify-between items-center px-4">
-										<span className="text-xs text-neutral-500 uppercase tracking-widest font-mono">
-											Explore all our capabilities
-										</span>
-										<Link
-											to="/services"
-											className="text-sm font-bold text-neon-green hover:underline flex items-center gap-1 group/link"
-										>
-											View All Services
-											<ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-										</Link>
-									</div>
-								</motion.div>
-							)}
+										<div className="col-span-3 pt-6 mt-2 border-t border-white/5 flex justify-between items-center px-4">
+											<span className="text-[10px] text-neutral-500 uppercase tracking-[0.2em] font-mono font-bold">
+												Explore all our capabilities
+											</span>
+											<Link
+												to="/services"
+												className="text-sm font-bold text-neon-green hover:underline flex items-center gap-2 group/link"
+											>
+												View All Services
+												<ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+											</Link>
+										</div>
+									</motion.div>
+								)}
+							</AnimatePresence>
 						</div>
 					))}
 				</nav>
 
+				{/* CTA Button */}
+				<div className="hidden lg:flex items-center gap-4">
+					<Link to="/contact">
+						<MagneticButton className="px-6 py-2.5 bg-neon-green text-black font-bold text-sm rounded-full hover:bg-neon-green/90 transition-all flex items-center gap-2">
+							<span>Get a Proposal</span>
+							<ArrowRight className="w-4 h-4" />
+						</MagneticButton>
+					</Link>
+				</div>
+
 				{/* Mobile Menu Button */}
 				<button
-					className="md:hidden text-neutral-300 hover:text-white"
+					className="md:hidden text-neutral-300 hover:text-white p-2"
 					onClick={() => setIsOpen(!isOpen)}
 					aria-label="Toggle menu"
 				>
 					{isOpen ?
-						<X />
-					:	<Menu />}
+						<X className="w-6 h-6" />
+					:	<Menu className="w-6 h-6" />}
 				</button>
 			</div>
 
 			{/* Mobile Nav */}
-			{isOpen && (
-				<motion.div
-					initial={{ opacity: 0, y: -20 }}
-					animate={{ opacity: 1, y: 0 }}
-					className="md:hidden absolute top-20 left-0 right-0 bg-neutral-900 border-b border-white/10 p-6"
-				>
-					<nav className="flex flex-col gap-4">
-						{navLinks.map((link) => (
-							<Link
-								key={link.name}
-								to={link.href}
-								className={`text-lg font-medium transition-colors ${
-									(
-										link.href === "/" ?
-											pathname === "/"
-										:	pathname.startsWith(link.href)
-									) ?
-										"text-neon-green"
-									:	"text-neutral-300 hover:text-neon-green"
-								}`}
-								onClick={() => setIsOpen(false)}
-							>
-								{link.name}
+			<AnimatePresence>
+				{isOpen && (
+					<motion.div
+						initial={{ opacity: 0, height: 0 }}
+						animate={{ opacity: 1, height: "auto" }}
+						exit={{ opacity: 0, height: 0 }}
+						className="md:hidden absolute top-20 left-0 right-0 bg-neutral-950 border-b border-white/10 overflow-hidden"
+					>
+						<nav className="flex flex-col p-6 gap-6">
+							{navLinks.map((link) => (
+								<Link
+									key={link.name}
+									to={link.href}
+									className={`text-xl font-bold transition-colors ${
+										(
+											link.href === "/" ?
+												pathname === "/"
+											:	pathname.startsWith(link.href)
+										) ?
+											"text-neon-green"
+										:	"text-neutral-300 hover:text-neon-green"
+									}`}
+									onClick={() => setIsOpen(false)}
+								>
+									{link.name}
+								</Link>
+							))}
+							<Link to="/contact" onClick={() => setIsOpen(false)}>
+								<button className="w-full py-4 bg-neon-green text-black font-bold rounded-xl flex items-center justify-center gap-2">
+									<span>Get a Proposal</span>
+									<ArrowRight className="w-5 h-5" />
+								</button>
 							</Link>
-						))}
-					</nav>
-				</motion.div>
-			)}
+						</nav>
+					</motion.div>
+				)}
+			</AnimatePresence>
 		</header>
 	);
 }

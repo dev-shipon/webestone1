@@ -105,18 +105,19 @@
     },
     {
         "id": "14",
-        "title": "New Service",
-        "description": "",
-        "iconName": "Search",
-        "color": "text-white",
-        "href": "#"
+        "title": "E-commerce Solutions",
+        "description": "Comprehensive online store development and optimization to scale your sales globally.",
+        "iconName": "ShoppingBag",
+        "color": "text-emerald-500",
+        "href": "/services/ecommerce"
     },
     {
         "id": "15",
-        "title": "New Service",
-        "description": "",
-        "iconName": "Search",
-        "color": "text-white",
-        "href": "#"
+        "title": "Graphic Design",
+        "description": "Bold visual identities and marketing materials that capture your brand's unique essence.",
+        "iconName": "Palette",
+        "color": "text-indigo-500",
+        "href": "/services/graphic-design"
     }
+
 ]

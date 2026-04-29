@@ -1,24 +1,46 @@
 import Hero from "../components/Hero";
+import TrustedPlatforms from "../components/TrustedPlatforms";
 import ServiceGrid from "../components/ServiceGrid";
 import WhyChooseUs from "../components/WhyChooseUs";
-import OurPromises from "../components/OurPromises";
-import VideoSection from "../components/VideoSection";
 import LatestInsights from "../components/LatestInsights";
+import MarketAnalysis from "../components/MarketAnalysis";
+import AuditCTA from "../components/AuditCTA";
+import IndustryExpertise from "../components/IndustryExpertise";
+import SuccessStories from "../components/SuccessStories";
+import Testimonials from "../components/Testimonials";
+import WorkingProcess from "../components/WorkingProcess";
+import FAQ from "../components/FAQ";
+import ToolsLogoBar from "../components/ToolsLogoBar";
+import Comparison from "../components/Comparison";
+import Team from "../components/Team";
+import Awards from "../components/Awards";
+import NewsletterCTA from "../components/NewsletterCTA";
 import servicesData from "../data/services.json";
 import { blogPosts } from "../data/blogData";
 
 export default function HomePage() {
-	const services = servicesData.filter((s) => s.description); // filter out empty services
-	const posts = blogPosts.slice(0, 3);
+  const services = servicesData.filter((s) => s.description); 
+  const posts = blogPosts.slice(0, 3);
 
-	return (
-		<main>
-			<Hero />
-			<ServiceGrid initialServices={services} />
-			<WhyChooseUs />
-			<OurPromises />
-			<VideoSection />
-			<LatestInsights initialPosts={posts} />
-		</main>
-	);
+  return (
+    <main>
+      <Hero />
+      <TrustedPlatforms />
+      <MarketAnalysis />
+      <ToolsLogoBar />
+      <ServiceGrid initialServices={services} />
+      <Comparison />
+      <AuditCTA />
+      <WhyChooseUs />
+      <IndustryExpertise />
+      <SuccessStories />
+      <Testimonials />
+      <Team />
+      <WorkingProcess />
+      <Awards />
+      <FAQ />
+      <NewsletterCTA />
+      <LatestInsights initialPosts={posts} />
+    </main>
+  );
 }
