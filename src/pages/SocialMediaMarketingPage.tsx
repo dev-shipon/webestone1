@@ -12,7 +12,8 @@ import {
   PlayCircle,
   ArrowRight,
   TrendingUp,
-  Search
+  Search,
+  Globe
 } from "lucide-react";
 import { MagneticButton } from "../components/ui/MagneticButton";
 
