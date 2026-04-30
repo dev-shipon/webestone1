@@ -12,6 +12,14 @@ import BlogDetailPage from "./pages/BlogDetailPage";
 import ServicesPage from "./pages/ServicesPage";
 import ServiceDetailPage from "./pages/ServiceDetailPage";
 import ContentWritingPage from "./pages/ContentWritingPage";
+import DigitalMarketingPage from "./pages/DigitalMarketingPage";
+import ShopifySeoPage from "./pages/ShopifySeoPage";
+import VideoEditingPage from "./pages/VideoEditingPage";
+import PPCPage from "./pages/PPCPage";
+import SocialMediaMarketingPage from "./pages/SocialMediaMarketingPage";
+import AiSeoPage from "./pages/AiSeoPage";
+import SeoPage from "./pages/SeoPage";
+import WordpressDevelopmentPage from "./pages/WordpressDevelopmentPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
@@ -30,8 +38,21 @@ export default function App() {
 					<Route path="/blogs" element={<BlogsPage />} />
 					<Route path="/blogs/:id" element={<BlogDetailPage />} />
 					<Route path="/services" element={<ServicesPage />} />
+					
+					{/* Specific Service Pages */}
+					<Route path="/services/digital-marketing" element={<DigitalMarketingPage />} />
+					<Route path="/services/seo" element={<SeoPage />} />
+					<Route path="/services/shopify-seo" element={<ShopifySeoPage />} />
+					<Route path="/services/video-editing" element={<VideoEditingPage />} />
+					<Route path="/services/ppc" element={<PPCPage />} />
+					<Route path="/services/social-media-marketing" element={<SocialMediaMarketingPage />} />
+					<Route path="/services/ai-solutions" element={<AiSeoPage />} />
+					<Route path="/services/web-development" element={<WordpressDevelopmentPage />} />
 					<Route path="/services/content-writing" element={<ContentWritingPage />} />
+					
+					{/* Dynamic Service Detail Page (Catch-all for other services) */}
 					<Route path="/services/:slug" element={<ServiceDetailPage />} />
+					
 					<Route
 						path="/terms-and-conditions"
 						element={<TermsAndConditionsPage />}

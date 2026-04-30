@@ -3,12 +3,12 @@ import { ArrowUpRight, TrendingUp, Users, Target } from "lucide-react";
 
 const cases = [
   {
-    title: "E-commerce Giant Growth",
-    client: "RetailHub BD",
-    stat: "5000%",
-    metric: "Organic Traffic Increase",
-    description: "Implemented a full SEO and Content strategy that dominated high-intent keywords.",
-    tags: ["SEO", "Content Strategy"],
+    title: "High-Performance Web Ecosystem",
+    client: "Global Tech Solutions",
+    stat: "300%",
+    metric: "Increase in User Retention",
+    description: "Built a custom, lightning-fast web platform with seamless UI/UX that transformed their digital presence.",
+    tags: ["Web Dev", "UI/UX Design"],
     color: "from-blue-500/20 to-cyan-500/20",
   },
   {

@@ -65,15 +65,15 @@ export default function Hero() {
         >
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10">
             <span className="flex h-2 w-2 rounded-full bg-neon-green animate-ping"></span>
-            <span className="text-xs font-bold text-white uppercase tracking-widest">Digital Growth Partner</span>
+            <span className="text-xs font-bold text-white uppercase tracking-widest">Creative & Digital Growth Agency</span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-black text-white leading-[1.05] tracking-tight">
-            Best Digital Marketing Agency in <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-cyan-400">Bangladesh</span>
+            Your All-in-One <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-cyan-400">Creative & Growth</span> Partner
           </h1>
 
           <p className="text-lg text-neutral-400 max-w-xl leading-relaxed">
-            Helping brands scale with ROI-driven strategies, cutting-edge AI automation, and high-conversion marketing funnels. We don't just run ads; we build growth engines.
+            From high-performance Web Development and SEO to cinematic Video Editing and ROI-driven Marketing. We build the complete digital ecosystem your brand needs to dominate.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-4">

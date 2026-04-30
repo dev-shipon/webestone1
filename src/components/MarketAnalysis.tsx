@@ -48,10 +48,10 @@ export default function MarketAnalysis() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-5xl font-black text-white mb-6">
-              Why Digital Marketing in <span className="text-neon-green">Bangladesh?</span>
+              Why Your Business Needs a <span className="text-neon-green">Strategic Partner?</span>
             </h2>
             <p className="text-neutral-400 text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
-              The digital landscape in Bangladesh is evolving rapidly. To stay competitive, brands must adapt to where their customers are: <span className="text-white font-semibold">Online.</span>
+              The digital landscape is evolving rapidly. To stay competitive, brands need more than just a website or an ad—they need a <span className="text-white font-semibold">Complete Growth Ecosystem.</span>
             </p>
           </motion.div>
         </div>

@@ -28,7 +28,7 @@ export default function WhyChooseUs() {
 							</span>
 						</h2>
 						<p className="mt-6 text-neutral-400 text-lg md:text-xl max-w-2xl mx-auto">
-							Stop paying for vanity metrics. We focus exclusively on visibility, engagement, and revenue-generating conversions.
+							Stop settling for average results. We integrate design, technology, and marketing to create seamless experiences that drive real business impact.
 						</p>
 					</motion.div>
 				</div>

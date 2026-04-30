@@ -17,10 +17,10 @@ export default function AuditCTA() {
               <span className="text-xs font-bold uppercase tracking-wider">Not getting results?</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
-              Get Your Free <span className="text-neon-green">Marketing Audit</span> Today
+              Get Your Free <span className="text-neon-green">Digital Growth Audit</span> Today
             </h2>
             <p className="text-neutral-400 text-lg mb-8 leading-relaxed">
-              Are you spending money on ads but not seeing the ROI? Our experts will analyze your current strategy and show you exactly where you're losing money.
+              Is your digital presence failing to convert? Our experts will analyze your website, SEO, and marketing strategy to show you exactly how to scale.
             </p>
             <ul className="space-y-4 mb-8">
               {[
